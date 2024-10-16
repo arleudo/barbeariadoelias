@@ -1,0 +1,261 @@
+body {
+    padding: 0;
+    background-color: rgb(25, 23, 34);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+}
+
+ul li {
+    margin: 0 15px;
+}
+
+ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.AppBar {
+    background-color: #ff9900;
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+}
+
+.center {
+    text-align: center;
+    margin-top: 5rem;
+}
+
+.center img {
+    width: 150 px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid #ff9900;
+}
+
+h1,
+h2,
+h3 {
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+a:hover {
+    color: #eeba70;
+}
+
+.tesoura {
+    width: 150px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border: none;
+    transition: transform 0.3s;
+}
+
+.tesoura:hover {
+    transform: scale(1.1);
+}
+
+.navalha {
+    filter: invert(100%) brightness(100%);
+    width: 150px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border: none;
+    transition: transform 0.3s;
+}
+
+.navalha:hover {
+    transform: scale(1.1);
+}
+
+.zap {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 2rem;
+    right: 2rem;
+    cursor: pointer;
+}
+
+.servicos {
+    margin: auto;
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+}
+
+.about {
+    margin-top: 5rem;
+}
+
+tr,
+td,
+th {
+    height: 60px;
+    width: auto;
+    text-align: center;
+    border: 1px solid #ff9900;
+}
+
+table {
+    width: 50%;
+    margin: auto;
+    color: #ffffff;
+    border: 1px solid #ff9900;
+}
+
+.aviso {
+    color: #ff9900;
+}
+
+.redes {
+    margin: 20px auto;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    transition: transform 0.4;
+}
+
+.redes:hover {
+    transform: scale(1.1);
+}
+
+.imgcenter {
+    border: 2px solid #eeba70;
+    width: 250px;
+    height: auto;
+    padding: 5px;
+
+}
+
+.tableimg {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.conteiner {
+    text-align: center;
+}
+
+.map {
+    width: 500px;
+    height: auto;
+}
+
+.local {
+    text-align: center;
+    color: #ff9900;
+}
+
+.local:hover {
+    transform: scale(1.1);
+}
+
+.avaliacao {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    align-items: center;
+    font-size: 20px;
+    border-bottom: 3px white;
+}
+
+.estrela {
+    color: #ff9900;
+    font-size: 50px;
+    display: inline-flex;
+    margin-top: 5rem;
+    cursor: pointer;
+}
+
+.comentario {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ff9900;
+    border-radius: 5px;
+}
+textarea{
+    margin: 0;
+    width: 25%;
+}
+@media screen and (max-width: 1020px) {
+    .AppBar {
+        flex-direction: column;
+        height: auto;
+
+    }
+
+    ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .center img {
+        width: 100px;
+        height: 100px;
+        margin: 5rem;
+    }
+
+    .servicos {
+        width: 80%;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    table {
+        width: 90%;
+    }
+
+    .zap {
+        width: 50px;
+        height: 50px;
+    }
+
+    h1,
+    h2,
+    h3 {
+        font-size: 1.5em;
+    }
+
+    .local {
+        font-size: 1em;
+    }
+
+    .comentarios {
+        padding: 0.5rem;
+    }
+
+    .estrela {
+        font-size: 30px;
+        margin-top: 10rem;
+    }
+
+    .conteiner {
+        width: 10px;
+        height: auto;
+    }
+}

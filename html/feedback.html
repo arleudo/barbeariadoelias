@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <link rel="stylesheet" href="../css/index.css">
+    
+</head>
+<body>
+    <header class="AppBar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="contato.html">Contato</a></li>
+            <li><a href="horario.html">Horários</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="feedback.html">FeedBack</a></li>
+        </ul>
+    </header>
+    <form class="FeedBack">
+        <div class="avaliacao">
+            <span class="estrela" data-value="1">&#9734;</span>
+            <span class="estrela" data-value="2">&#9734;</span>
+            <span class="estrela" data-value="3">&#9734;</span>
+            <span class="estrela" data-value="4">&#9734;</span>
+            <span class="estrela" data-value="5">&#9734;</span>
+        </div>
+        <textarea id="FeedBackinput" placeholder="Deixe seu comentário"></textarea>
+        <button type="button">Enviar</button>
+    </form>
+    <div class="comentario">
+        <h2>Comentários</h2>
+        <div id="comentariosList"></div> <!-- Corrigido para "comentariosList" -->
+    </div>
+    <script>
+        const estrelas = document.querySelectorAll('.estrela');
+        const comentariosList = document.getElementById('comentariosList');
+        const textarea = document.getElementById('FeedBackinput');
+        const button = document.querySelector('.FeedBack button');
+    
+        let rating = 0;
+    
+        function carregarComentarios() {
+            const comentarios = JSON.parse(localStorage.getItem('comentarios')) || [];
+            comentarios.forEach(comentario => adicionarComentario(comentario.texto, comentario.rating));
+        }
+        function adicionarComentario(comentarioTexto, comentarioRating) {
+            const novoComentario = document.createElement('div');
+            novoComentario.classList.add('comentario');
+            novoComentario.innerHTML = `
+                <div class="avaliacao">
+                    ${'★'.repeat(comentarioRating)}${'☆'.repeat(5 - comentarioRating)}
+                </div>
+                <p>${comentarioTexto}</p>
+            `;
+            comentariosList.appendChild(novoComentario);
+        }
+        estrelas.forEach(estrela => {
+            estrela.addEventListener('click', () => {
+                rating = estrela.getAttribute('data-value');
+                estrelas.forEach((item, index) => {
+                    item.innerHTML = index < rating ? '&#9733;' : '&#9734;';
+                });
+            });
+        });
+    
+        button.addEventListener('click', () => {
+            const comentarioTexto = textarea.value.trim();
+    
+            if (comentarioTexto === '' || rating === 0) {
+                alert('Por favor, adicione um comentário e selecione uma avaliação!');
+                return;
+            }
+            const comentarios = JSON.parse(localStorage.getItem('comentarios')) || [];
+
+            adicionarComentario(comentarioTexto, rating);
+    
+            comentarios.push({ texto: comentarioTexto, rating: parseInt(rating) });
+    
+            if (comentarios.length > 10) {
+                comentarios.shift();
+                comentariosList.removeChild(comentariosList.firstChild); // Remove o comentário do DOM
+            }
+    
+            localStorage.setItem('comentarios', JSON.stringify(comentarios));
+    
+            textarea.value = '';
+            rating = 0;
+            estrelas.forEach(item => item.innerHTML = '&#9734;');
+        });
+    
+        carregarComentarios();
+    </script>
+    
+</body>
+</html>
